@@ -5,9 +5,9 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 
 function App() {
   const [message, setMessage] = useState('Loading...');
+  const wsProvider = new WsProvider('wss://rpc.polkadot.io');
   useEffect(() => {
     async function loadPolka() {
-      const wsProvider = new WsProvider('wss://rpc.polkadot.io');
       const api = await ApiPromise.create({ provider: wsProvider });
       setMessage(api.genesisHash.toHex());
     }
